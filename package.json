@@ -18,7 +18,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc && npm run copy && export NODE_ENV=production && concurrently --kill-others \"tsc --watch\" \"node build/index.js\"",
+    "start": "tsc && npm run copy && export NODE_ENV=production && node build/index.js",
     "dev": "tsc && npm run copy && export NODE_ENV=development && concurrently --kill-others \"tsc --watch\" \"nodemon build/index.js\"",
     "copy": "copyfiles -E -f ./src/public/*.html ./build/public"
   },

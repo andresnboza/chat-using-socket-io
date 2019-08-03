@@ -1,5 +1,8 @@
 import express = require('express');
 
+const EXPRESS = require('express');
+const path = require('path');
+
 // Route imports
 import IndexRouter from './shared/routes/index';
 
@@ -8,7 +11,14 @@ class App {
 
     constructor() {
         this.express = express();
-        this.routes();
+        //Setting static files
+        this.setStatic();
+        // this.routes();
+    }
+
+    private setStatic() {
+        console.log(path.join(__dirname, '/public'));
+        this.express.use(EXPRESS.static(path.join(__dirname, '/public')));
     }
 
     private routes(): void {

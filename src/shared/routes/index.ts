@@ -1,5 +1,4 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { of } from 'rxjs';
 
 class IndexRouter {
     public router: Router;
@@ -11,9 +10,7 @@ class IndexRouter {
 
     private init() {
         this.router.get('/', (req, res) => {
-            of(null).subscribe(() => {
-                res.send('Hello World!');
-            });
+            res.send('Hello World');
         });
     }
 }

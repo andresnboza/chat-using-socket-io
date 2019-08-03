@@ -1,4 +1,5 @@
 import * as http from 'http';
+import Socket from './shared/lib/socket.io/socket';
 
 import App from './app';
 
@@ -48,9 +49,10 @@ function onListening(): void {
 }
 
 const env = require('../config/config');
-const port = normalizePort(env.PORT || 8080);
+const port = normalizePort(process.env.PORT || 8080);
 
 App.set('port', port);
+
 
 let httpServer: any;
 httpServer = http.createServer(App);
@@ -58,3 +60,6 @@ httpServer = http.createServer(App);
 httpServer.listen(port);
 httpServer.on('error', onError);
 httpServer.on('listening', onListening);
+
+//Now working on setting up the socket
+Socket.setupSocket(httpServer);

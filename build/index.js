@@ -11,6 +11,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var http = __importStar(require("http"));
+var socket_1 = __importDefault(require("./shared/lib/socket.io/socket"));
 var app_1 = __importDefault(require("./app"));
 process.on('uncaughtException', function (err) {
     console.log(err);
@@ -56,10 +57,12 @@ function onListening() {
     console.log("Server is listening on " + bind);
 }
 var env = require('../config/config');
-var port = normalizePort(env.PORT || 8080);
+var port = normalizePort(process.env.PORT || 8080);
 app_1.default.set('port', port);
 var httpServer;
 httpServer = http.createServer(app_1.default);
 httpServer.listen(port);
 httpServer.on('error', onError);
 httpServer.on('listening', onListening);
+//Now working on setting up the socket
+socket_1.default.setupSocket(httpServer);

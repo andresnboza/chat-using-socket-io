@@ -7,7 +7,7 @@ To install the needed packages:
 $ npm install
 ```
 
-###Remember to allways create your own config.js file, you can use the config.template.js for reference
+### Remember to allways create your own config.js file, you can use the config.template.js for reference
 
 To run the server:
 ```sh
